@@ -1,7 +1,8 @@
 import React from "react";
 import ProductItem from "./ProductItem";
-
-export default function ProductList() {
+//1. separate the product item code into a single ProductItem component
+//2. dont want  hard code , render array of products, get the object (product) in array , give the single object to the product
+export default function ProductList(props) {
   const arrayProduct = [
     {
       id: 1,
@@ -40,25 +41,14 @@ export default function ProductList() {
       img: "./img/applephone.jpg",
     },
   ];
-  const renderProduct = () => {
+  const renderProduct = (arrayProduct) => {
     return arrayProduct.map((product, index) => {
       return (
         <div className="col-4" key={index}>
-          <div classname="card text-center">
-            <img
-              classname="card-img-hitop"
-              src="./img/applephone.jpg"
-              alt="phone"
-              style={{width: 300, height: 300}}
-            />
-            <div classname="card-body text-center">
-              <h4 classname="card-title">Iphone</h4>
-              <p classname="card-text">500</p>
-              <button className="btn btn-success" onClick={() => {}}>
-                Add to cart
-              </button>
-            </div>
-          </div>
+          <ProductItem
+            productProps={product}
+            addProductProps={props.addProductProps}
+          />
         </div>
       );
     });
@@ -67,25 +57,7 @@ export default function ProductList() {
   return (
     <div>
       <div className="container">
-        <div className="row">
-          <div className="col-4">
-            <div classname="card text-center">
-              <img
-                classname="card-img-hitop"
-                src="./img/applephone.jpg"
-                alt="phone"
-                style={{width: 300, height: 300}}
-              />
-              <div classname="card-body text-center">
-                <h4 classname="card-title">Iphone</h4>
-                <p classname="card-text">500</p>
-                <button className="btn btn-success" onClick={() => {}}>
-                  Add to cart
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="row">{renderProduct(arrayProduct)}</div>
       </div>
     </div>
   );

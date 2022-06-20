@@ -1,6 +1,8 @@
 import React from "react";
+import ProductItem from "./ProductItem";
 
-export default function CartModal() {
+export default function CartModal(props) {
+  console.log("CartModal", props.cartArray);
   return (
     <div>
       <div>
@@ -26,7 +28,7 @@ export default function CartModal() {
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <div className="modal-body">Body</div>
+              <div className="modal-body">body</div>
               <div className="modal-footer">
                 <button
                   type="button"

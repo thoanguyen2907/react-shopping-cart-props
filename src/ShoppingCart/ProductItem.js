@@ -1,18 +1,25 @@
 import React from "react";
 
-export default function ProductItem() {
+export default function ProductItem(props) {
+  let {productProps} = props;
+
   return (
-    <div classname="card text-center">
+    <div className="card text-center">
       <img
-        classname="card-img-hitop"
-        src="./img/applephone.jpg"
-        alt="phone"
+        className="card-img-hitop"
+        src={productProps.img}
+        alt={productProps.name}
         style={{width: 300, height: 300}}
       />
-      <div classname="card-body text-center">
-        <h4 classname="card-title">Iphone</h4>
-        <p classname="card-text">500</p>
-        <button className="btn btn-success" onClick={() => {}}>
+      <div className="card-body text-center">
+        <h4 className="card-title">{productProps.name}</h4>
+        <p className="card-text">{productProps.price}</p>
+        <button
+          className="btn btn-success"
+          onClick={() => {
+            props.addProductProps(productProps);
+          }}
+        >
           Add to cart
         </button>
       </div>
